@@ -1,0 +1,23 @@
+when game will start -> start btn will get disable.
+when user will win/lose -> start btn will be disabled -> restart btn will be displayed.
+when game starts show a prompt to choose player1 or player2 .
+player1 -> "X" and player2 -> "O".
+when clicked by player1 -> "X" will display on button and so with player2 -> "O".
+
+track the pattern -> in row --- if all 3 btns in a row are same then win
+                     in column -- if all 3 btns in a coln are same then win.
+                     diagonally -- check both diagonal if same then win.
+
+
+if player1 array me - patterns mile toh
+
+
+ console.log("clicked");
+    for(let i = 0; i < userCheck1.length; i++) {
+      for(let j = 0; j < userCheck1[i].length; j++) {
+        console.log(userCheck1[j][i]);
+        if(userCheck1[i][j] === player1[j]) {
+          console.log("matched");
+        }
+      }
+    }
