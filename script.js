@@ -8,6 +8,7 @@ let player1 = [];
 let player2 = [];
 let currentState = true;
 let count = 0;
+let matchCount = 0;
 
 const arr = Array.from(btn);
 
@@ -17,7 +18,7 @@ function clickBtn() {
   this.classList.add("startDisabled");
   arr.forEach((item) => {
     item.addEventListener("click", (e) => {
-      count++;
+      //count++;
       if (currentState) {
         item.style.color = "green";
         item.textContent = "X";
@@ -34,9 +35,9 @@ function clickBtn() {
         traceCheck(player2, "O");
       }
 
-      if(count === 9) {
-        createNewEle("red", `!!!Game Over!!!`);
-      }
+      // if(count === 9) {
+      //   createNewEle("red", `!!!Game Over!!!`);
+      // }
     });
   });
 }
@@ -53,19 +54,27 @@ const userCheck1 = [
 ];
 
 function traceCheck(checkPlayer, X) {
+  count++;
   for (let i = 0; i < userCheck1.length; i++) {
-    let matchCount = 0;
+    matchCount = 0;
     for (let j = 0; j < userCheck1[i].length; j++) {
       if (checkPlayer.includes(userCheck1[i][j])) {
         matchCount++;
+       
+          if(matchCount === 3 && count === 9) {
+            createNewEle("green", `Hurray! ${X} You Win🤩`);
+            return;
+          } else if(matchCount === 3) {
+            createNewEle("green", `Hurray! ${X} You Win🤩`);
+          }
+        }
       }
     }
 
-    if (matchCount === 3) {
-      createNewEle("green", `Hurray! ${X} You Win🤩`);
+    if(count === 9) {
+      createNewEle("red", `!!!Game Over!!!`);
     }
   }
-}
 
 startBtn.addEventListener("click", clickBtn);
 
